@@ -6,11 +6,13 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
 </head>
 <body>
 <div class="container mt-5">
     <div class="d-flex justify-content-between mb-2">
-        <p><strong>Customer List</strong></p>
+        <p><strong>Orders List</strong></p>
         <a class="btn btn-primary" href="{{ url('getpdf?export=pdf') }}">Export to PDF</a>
     </div>
 
@@ -42,6 +44,13 @@
         @endforeach
         </tbody>
     </table>
+    @foreach($data as $row)
+        <div class="row content">
+            {!!$row->visualization!!}
+            <br>
+        </div>
+    @endforeach
+
 </div>
 </body>
 </html>

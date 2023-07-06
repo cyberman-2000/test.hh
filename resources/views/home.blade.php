@@ -21,7 +21,7 @@
                 </div>
             @endif
             <h1>Конфигуратор входной двери</h1>
-           <div class="col-6 d-flex">
+           <div class="col-6 d-flex for_viz">
                <div class="door1 colour_bor mx-2">
                    <div class="handle"></div>
                </div>
@@ -102,9 +102,11 @@
                         </div>
                             <h3>Итого: <span class="itogo"></span></h3>
                         <input type="hidden" id="total_price" name="total_price">
-                    <button type="submit" class="btn btn-outline-danger">Отправит комплектацию</button>
+                        <input type="hidden" id="vizual" name="vizual">
+
+                    <button type="submit" class="btn get_changes btn-outline-danger">Отправит комплектацию</button>
                     </form>
-                    <a class="btn btn-primary" href="{{ url('/orders') }}">Export to PDF</a>
+                    <a class="btn btn-primary mt-2" href="{{ url('/orders') }}">View Orders</a>
                 </div>
 
             </div>

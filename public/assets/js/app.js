@@ -57,6 +57,8 @@ $('#door').change(function(){
     if ($('#door').val()==0){
         $('.colour_bor').css({"background":'green'});
     }
+
+
     $('.colour_bor').css({"background":$('#door').find(':selected').attr('rgb')});
     // Calculate total price
     $door_price=parseInt($('#door').find(':selected').attr('price'))
@@ -68,6 +70,7 @@ $('#border').change(function(){
     if ($('#border').val()==0){
         $('.colour_bor').css({"border-color":'red'});
     }
+
     $('.colour_bor').css({"border-color":$('#border').find(':selected').attr('rgb')});
     // Calculate total price
     $border_price=parseInt($('#border').find(':selected').attr('price'))
@@ -105,7 +108,10 @@ $('.icon').click(function () {
     // console.log($('.point').find(':checked').val());
 
 })
-
+$('.get_changes').click(function () {
+    $x1=$('.for_viz').get(0).outerHTML;
+    $('#vizual').val($x1);
+})
 $('#acses').click(function (){
     $('#acsesuars').fadeToggle()
 })

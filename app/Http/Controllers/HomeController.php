@@ -25,7 +25,6 @@ class HomeController extends Controller
         return view('home',compact(['border','acsessuares','height','width','door','handle']));
     }
     public function store(Request $request){
-//        dd($request);
         $acsesuars='';
         foreach ($request->request as $key => $value){
             if (str_contains($key,'melochi')){
@@ -41,7 +40,8 @@ class HomeController extends Controller
                 'height'=>$request->height,
                 'side'=>$request->side,
                 'acsessuares'=>$acsesuars,
-                'total_price'=>$request->total_price
+                'total_price'=>$request->total_price,
+                'visualization'=>$request->vizual
             ]);
         return back()->with('success', 'Дверь успешно заказан');
     }
