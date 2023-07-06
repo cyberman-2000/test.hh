@@ -13,6 +13,13 @@
 <div class="container">
     <div class="container">
         <div class="row dor-sec">
+            @if (\Session::has('success'))
+                <div class="alert alert-success" role="alert">
+
+                    {!! \Session::get('success') !!}
+
+                </div>
+            @endif
             <h1>Конфигуратор входной двери</h1>
            <div class="col-6 d-flex">
                <div class="door1 colour_bor mx-2">
@@ -25,58 +32,59 @@
             <div class="col-6">
                 <div class="form">
                     <h3>Параметры</h3>
-                    <form action="">
+                    <form action="{{route('store')}}" method="post">
+                        @csrf
                         <div class="col-bor d-flex justify-content-between">
                             <label for="">Цвет покраски:</label>
-                            <select type="select" id="border" class="input-def">
-                                <option value="0">Выбрать</option>
+                            <select name="border" type="select" required id="border" class="input-def">
+                                <option price="0" value="0">Выбрать</option>
                                 @foreach($border as $value)
-                                    <option rgb="{{$value->rgb}}" value="{{$value->price}}">{{$value->color}}</option>
+                                    <option price="{{$value->price}}" rgb="{{$value->rgb}}" value="{{$value->color}}">{{$value->color}}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="col-door d-flex justify-content-between">
                             <label for="">Цвет плёнки:</label>
-                            <select type="select" id="door" class="input-def door_sec">
-                                <option value="0">Выбрать</option>
+                            <select name="door" type="select" required id="door" class="input-def door_sec">
+                                <option price="0" value="0">Выбрать</option>
                                 @foreach($door as $value)
-                                    <option rgb="{{$value->rgb}}" value="{{$value->price}}">{{$value->color}}</option>
+                                    <option price="{{$value->price}}" rgb="{{$value->rgb}}" value="{{$value->color}}">{{$value->color}}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="col-handle d-flex justify-content-between">
                             <label for="">Цвет ручки:</label>
-                            <select type="select" id="handle" class="input-def">
-                                <option value="0">Выбрать</option>
+                            <select name="handle" type="select" required id="handle" class="input-def">
+                                <option price="0" value="0">Выбрать</option>
                                 @foreach($handle as $value)
-                                    <option rgb="{{$value->rgb}}" value="{{$value->price}}">{{$value->color}}</option>
+                                    <option price="{{$value->price}}" rgb="{{$value->rgb}}" value="{{$value->color}}">{{$value->color}}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="col-handle d-flex justify-content-between">
                             <label for="">Ширина:</label>
-                            <select type="select" id="width" class="input-def">
-                                <option value="0">Выбрать</option>
+                            <select name="width" type="select" required id="width" class="input-def">
+                                <option price="0" value="0">Выбрать</option>
                                 @foreach($width as $value)
-                                    <option value="{{$value->price}}">{{$value->size}}</option>
+                                    <option price="{{$value->price}}" value="{{$value->size}}">{{$value->size}}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="col-handle d-flex justify-content-between">
                             <label for="">Высота:</label>
-                            <select type="select" id="height" class="input-def">
-                                <option value="0">Выбрать</option>
+                            <select name="height" type="select" required id="height" class="input-def">
+                                <option price="0" value="0">Выбрать</option>
                                 @foreach($height as $value)
-                                    <option value="{{$value->price}}">{{$value->size}}</option>
+                                    <option price="{{$value->price}}" value="{{$value->size}}">{{$value->size}}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="col-handle d-flex justify-content-between">
                             <label for="">Открывание:</label>
-                            <select type="select" id="open_side" class="input-def ">
-                                <option value="0">Выбрать</option>
-                                <option value="1">Правое</option>
-                                <option value="2">Левое</option>
+                            <select name="side" type="select" id="open_side" class="input-def ">
+                                <option value="right">Выбрать</option>
+                                <option value="right">Правое</option>
+                                <option value="left">Левое</option>
                             </select>
                         </div>
                         <div class="col-handle d-flex justify-content-between">
@@ -84,7 +92,7 @@
                             <p id="acses">Выбрать</p>
                             <ul id="acsesuars">
                                 @foreach($acsessuares as $value)
-                                    <li><input type='checkbox' id='checkboxOne' value='{{$value->price}}'><label for='checkboxOne'>{{$value->name}}</label></li>
+                                    <li><input price="{{$value->price}}" name="melochi{{$value->id}}" type='checkbox' class="point" id='checkboxOne{{$value->id}}' value='{{$value->name}}'><label for='checkboxOne{{$value->id}}'>{{$value->name}}</label></li>
                                 @endforeach
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-square-rounded-x-filled" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -92,7 +100,8 @@
                                 </svg>
                             </ul>
                         </div>
-                            <h3>Итого:</h3>
+                            <h3>Итого: <span class="itogo"></span></h3>
+                        <input type="hidden" id="total_price" name="total_price">
                     <button type="submit" class="btn btn-outline-danger">Отправит комплектацию</button>
                     </form>
                 </div>

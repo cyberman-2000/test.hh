@@ -32,19 +32,80 @@ let door_params = {
 }
 
 // ............................... DOM events........................................................
+//  Начальный цены параметров
+
+$border_price=0;
+$door_price=0;
+$handle_price=0;
+$width_price=0;
+$height_price=0;
+$acsesuars_price=0;
 
 $('#handle').change(function(){
+    // Live changing color
+    if ($('#handle').val()==0){
+        $('.handle').css({"background":'blue'});
+    }
     $('.handle').css({"background":$('#handle').find(':selected').attr('rgb')});
+    // Calculate total price
+    $handle_price=parseInt($('#handle').find(':selected').attr('price'))
+    $total= $handle_price+$door_price+$border_price+$width_price+$height_price+$acsesuars_price;
+    $('.itogo').html($total+"руб.")
 })
 $('#door').change(function(){
+    // Live changing color
+    if ($('#door').val()==0){
+        $('.colour_bor').css({"background":'green'});
+    }
     $('.colour_bor').css({"background":$('#door').find(':selected').attr('rgb')});
+    // Calculate total price
+    $door_price=parseInt($('#door').find(':selected').attr('price'))
+    $total= $handle_price+$door_price+$border_price+$width_price+$height_price+$acsesuars_price;
+    $('.itogo').html($total+"руб.")
 })
 $('#border').change(function(){
+    // Live changing color
+    if ($('#border').val()==0){
+        $('.colour_bor').css({"border-color":'red'});
+    }
     $('.colour_bor').css({"border-color":$('#border').find(':selected').attr('rgb')});
+    // Calculate total price
+    $border_price=parseInt($('#border').find(':selected').attr('price'))
+    $total= $handle_price+$door_price+$border_price+$width_price+$height_price+$acsesuars_price;
+    $('.itogo').html($total+"руб.")
 })
+$('#width').change(function(){
+    // Calculate total price
+    $width_price=parseInt($('#width').find(':selected').attr('price'))
+    $total= $handle_price+$door_price+$border_price+$width_price+$height_price+$acsesuars_price;
+    $('.itogo').html($total+"руб.")
+})
+$('#height').change(function(){
+    // Calculate total price
+    $height_price=parseInt($('#height').find(':selected').attr('price'))
+    $total= $handle_price+$door_price+$border_price+$width_price+$height_price+$acsesuars_price;
+    $('.itogo').html($total+"руб.")
+})
+
+$total= $handle_price+$door_price+$border_price+$width_price+$height_price+$acsesuars_price;
+$('.itogo').html($total+"руб.")
 $('.icon').click(function () {
   $('#acsesuars').hide();
+  $acsesuars_price=0;
+    document.querySelectorAll('.point').forEach(function(elem) {
+
+        if (elem.checked){
+            $acsesuars_price+=parseInt(elem.getAttribute("price"));
+
+        }
+    });
+    $total= $handle_price+$door_price+$border_price+$width_price+$height_price+$acsesuars_price;
+    $('.itogo').html($total+"руб.")
+    $('#total_price').attr('value',$total)
+    // console.log($('.point').find(':checked').val());
+
 })
+
 $('#acses').click(function (){
     $('#acsesuars').fadeToggle()
 })
