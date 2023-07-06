@@ -9,7 +9,9 @@ use App\Models\Handle;
 use App\Models\Height;
 use App\Models\Orders;
 use App\Models\Width;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
+use function PHPUnit\Framework\returnValue;
 
 class HomeController extends Controller
 {
@@ -43,5 +45,21 @@ class HomeController extends Controller
             ]);
         return back()->with('success', 'Дверь успешно заказан');
     }
+    public function getpdf(Request $request){
+             $data = Orders::all();
+             if ($request->has('export')) {
+                 if ($request->get('export') == 'pdf') {
+                    $pdf = PDF::loadView('customerspdf', compact('data'));
+                    return $pdf->download('orders-list.pdf');
+                    }
+                }
+        return view('customers', compact('data'));
+    }
+    public function orders(){
+        $data = Orders::all();
+        return view('customerspdf',compact('data'));
+    }
+
+
 
 }

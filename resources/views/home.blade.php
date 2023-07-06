@@ -104,6 +104,7 @@
                         <input type="hidden" id="total_price" name="total_price">
                     <button type="submit" class="btn btn-outline-danger">Отправит комплектацию</button>
                     </form>
+                    <a class="btn btn-primary" href="{{ url('/orders') }}">Export to PDF</a>
                 </div>
 
             </div>
