@@ -9,8 +9,8 @@ body{
 .door1, .door2{
     border: solid #ff1c0c;
     border-width: 15px 8px;
-    width: 250px;
-    height: 500px;
+    width: 250px !important;
+    height: 500px !important;
     background: green;
     display: flex;
     align-items: center;
@@ -102,4 +102,14 @@ ul.ks-cboxtags li input[type="checkbox"] {
 }
 ul.ks-cboxtags li input[type="checkbox"]:focus + label {
     border: 2px solid #e9a1ff;
+}
+@media (max-width: 771px) {
+    .door1, .door2{
+        width: 150px !important;
+        height: 300px !important;
+    }
+    .handle{
+        width: 25px;
+        height: 5px;
+    }
 }

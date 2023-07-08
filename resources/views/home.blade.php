@@ -21,15 +21,15 @@
                 </div>
             @endif
             <h1>Конфигуратор входной двери</h1>
-           <div class="col-6 d-flex for_viz">
-               <div class="door1 colour_bor mx-2">
-                   <div class="handle"></div>
-               </div>
-               <div class="door2 colour_bor">
-                   <div class="handle"></div>
-               </div>
-           </div>
-            <div class="col-6">
+            <div class="col-6 col-lg-6 col-sm-12 d-flex for_viz row">
+                <div class="door1 colour_bor col-lg-6 col-sm-12 col-12 ">
+                    <div class="handle"></div>
+                </div>
+                <div class="door2 colour_bor col-lg-6 col-sm-12 col-12">
+                    <div class="handle"></div>
+                </div>
+            </div>
+            <div class="col-6 col-lg-6 col-sm-12 ">
                 <div class="form">
                     <h3>Параметры</h3>
                     <form action="{{route('store')}}" method="post">
@@ -100,11 +100,11 @@
                                 </svg>
                             </ul>
                         </div>
-                            <h3>Итого: <span class="itogo"></span></h3>
+                        <h3>Итого: <span class="itogo"></span></h3>
                         <input type="hidden" id="total_price" name="total_price">
                         <input type="hidden" id="vizual" name="vizual">
 
-                    <button type="submit" class="btn get_changes btn-outline-danger">Отправит комплектацию</button>
+                        <button type="submit" class="btn get_changes btn-outline-danger">Отправит комплектацию</button>
                     </form>
                     <a class="btn btn-primary mt-2" href="{{ url('/orders') }}">View Orders</a>
                 </div>

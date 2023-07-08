@@ -14,6 +14,7 @@
     <div class="d-flex justify-content-between mb-2">
         <p><strong>Orders List</strong></p>
         <a class="btn btn-primary" href="{{ url('getpdf?export=pdf') }}">Export to PDF</a>
+        <a class="btn btn-primary" href="{{ route('send_to_telegram') }}">Send to Telegram</a>
     </div>
 
     <table class="table table-bordered mb-5">

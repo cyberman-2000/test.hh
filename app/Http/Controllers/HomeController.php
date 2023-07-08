@@ -12,6 +12,10 @@ use App\Models\Width;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use function PHPUnit\Framework\returnValue;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
+
+
 
 class HomeController extends Controller
 {
@@ -50,6 +54,8 @@ class HomeController extends Controller
              if ($request->has('export')) {
                  if ($request->get('export') == 'pdf') {
                     $pdf = PDF::loadView('customerspdf', compact('data'));
+//                    dd($pdf);
+                     $file=$pdf->store('materials/'.'myorder'.'');
                     return $pdf->download('orders-list.pdf');
                     }
                 }
@@ -58,6 +64,9 @@ class HomeController extends Controller
     public function orders(){
         $data = Orders::all();
         return view('customerspdf',compact('data'));
+    }
+    public function sendpdf(){
+
     }
 
 
